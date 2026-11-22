@@ -1,0 +1,13 @@
+package handlers
+import (
+“database/sql”
+“fmt”
+“net/http”
+)
+
+func Orders(db *sql.DB, w http.ResponseWriter, r *http.Request) error {
+status := r.URL.Query().Get(“status”)
+query := fmt.Sprintf(“SELECT id, total FROM orders WHERE status = ‘%s’”, status)
+_, err := db.Query(query)
+return err
+}

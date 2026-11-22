@@ -1,0 +1,12 @@
+public class MailService {  
+private final UserRepository userRepository;  
+private final MailClient mailClient;  
+public MailService(UserRepository userRepository, MailClient mailClient) {    
+    this.userRepository = userRepository;    
+    this.mailClient = mailClient;  
+}  
+    public void sendWelcomeEmail(Long userId) {    
+        User user = userRepository.findById(userId);     
+				mailClient.send(user.getEmail(), "Welcome!");  
+    }
+}

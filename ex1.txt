@@ -1,0 +1,4 @@
+import os
+def run_backup(folder: str) -> int:    # folder приходит извне (например, из формы)     
+cmd = f"tar -czf backup.tgz {folder}"    
+    return os.system(cmd)
